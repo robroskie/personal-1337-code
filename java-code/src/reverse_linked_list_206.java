@@ -1,8 +1,3 @@
-//Push values from listnode parameter onto stack
-//Pop values off of stack and add to original listnode in order 
-//Need refactoring to increase speed
-
-import java.util.Stack;
 
 public class reverse_linked_list_206 {
 	public static void main(String[] args) {
@@ -27,11 +22,11 @@ public class reverse_linked_list_206 {
 		
 		ListNode list2 = reverseList(list);
 		
+		System.out.println("---------");
 		printList(list2);
-		
 		System.out.println("---------");
 		
-		ListNode list_empty = new ListNode();
+		ListNode list_empty = new ListNode(1);
 		
 		ListNode list_empty_rev = reverseList(list_empty);
 		printList(list_empty_rev);
@@ -44,33 +39,28 @@ public class reverse_linked_list_206 {
 			System.out.println(temp.val);
 			temp = temp.next;
 		}
-		
 	}
 	
     public static ListNode reverseList(ListNode head) {
-    	if(head == null)
+    	//If the head parameter is empty or only contains one element, return it 
+    	if(head == null || head.next == null)
     		return head;
-    	
-    	Stack<Integer> values = new Stack<>();
-    	ListNode itr = head;
-    	while (itr != null) {
-    		values.push(itr.val);
-    		itr = itr.next;
-    	}
-    	System.out.println("values are: " + values.toString());
-    		
 
-    	head = new ListNode(values.pop());
-  
-    	ListNode temp = head;
+    	//Otherwise create a new Node for each Node in current ListNode
+    	//Make new ListNode point to previous element containing ListNode
+    	//and repeat until entire head ListNode is iterated over
+    	ListNode prev = new ListNode(head.val);
+    	ListNode curr = new ListNode();
+    	head = head.next;
     	
-    	while(!values.isEmpty()) {
-    		System.out.println("pushing : " + values.peek());
-      		temp.next = new ListNode(values.pop());
-    		temp = temp.next;
+    	while(head != null) {
+    		curr = new ListNode(head.val);
+    		curr.next = prev;
+    		prev = curr;
+    		head = head.next;
     	}
     	
-    	return head;
+    	return curr;
     }
 	
 	static class ListNode {
@@ -81,9 +71,12 @@ public class reverse_linked_list_206 {
 		ListNode(int val, ListNode next) { this.val = val; this.next = next; }
 		
 	}
-	
 }
 
 //Runtime: 17 ms, faster than 6.23% of Java online submissions for Reverse Linked List.
 //Memory Usage: 38.5 MB, less than 79.53% of Java online submissions for Reverse Linked List.
 
+//After refactor 
+
+//Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Linked List.
+//Memory Usage: 38.4 MB, less than 88.41% of Java online submissions for Reverse Linked List.
