@@ -1,1 +1,2 @@
-console.log('odd case added');
+k = countSubStrings("aaaaa");
+// console.log(k);
