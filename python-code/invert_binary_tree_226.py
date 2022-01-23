@@ -12,10 +12,9 @@ class TreeNode(object):
 
 class Solution(object):
     def invertTree(self, root):
-        temp = self.left
-        self.right = temp
+        
 
-    t1 = TreeNode([3,9,20,None,None,15,7])
+    t1 = TreeNode([4,2,7,1,3,6,9])
         
 
     t2 = invertTree(t1)

@@ -1,2 +1,2 @@
-k = countSubStrings("aaaaa");
+k = countSubStrings(b);
 // console.log(k);
