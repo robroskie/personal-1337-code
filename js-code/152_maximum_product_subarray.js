@@ -15,7 +15,7 @@
         let value = nums[e];
 
         // cumulative min is the min of current value, current value * cumulative max and current value * cumulative min
-        // cumulative max is the max of the 3 calculated values above
+        // cumulative max is the max of the 3 calculated values above 
         // tempcMax is used to prevent error in the cMin calc
         let tempcMax = cMax;
         cMax = Math.max(value, cMax * value, cMin * value);
