@@ -8,7 +8,7 @@ public class sum_of_two_integers_371V2 {
 		int a = 12;
 		System.out.println("a is: " + Integer.toBinaryString(a));
 		int b = 25;
-		System.out.println("b is: " + Integer.toBinaryString(b));
+
 		
 
 		int result;
@@ -19,8 +19,5 @@ public class sum_of_two_integers_371V2 {
 			b = result << 1;
 		}
 		while(b != 0);
-
-		System.out.println(a);
-		
 	}
 }
