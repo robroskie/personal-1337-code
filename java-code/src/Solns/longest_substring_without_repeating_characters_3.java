@@ -4,39 +4,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class longest_substring_without_repeating_characters_3 {
-    public static int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int startWindow = 0;
-        int max = 0;
+	public static int lengthOfLongestSubstring(String s) {
+		int longestSubstr = 0;
+		int startWindow = 0;
 
-        for(int endWindow = 0; endWindow < s.length(); endWindow++) {
-        
-        	char key = s.charAt(endWindow);
- 
-        	if(map.containsKey(key)) {
-        		map.remove(s.charAt(startWindow));
-        		startWindow++;
-        
-        	}
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 
-        	map.merge(key, 1, Integer::sum);
-        	System.out.println(map);
-        	System.out.println("updating max to: " + max + ", " + (endWindow - startWindow + 1));
-        	max = Math.max(max, endWindow - startWindow + 1);
-        	
-        }
-        
-        
-    	return max;
-    }
+		for (int endWindow = 0; endWindow < s.length(); endWindow++) {
+			System.out.println(map);
+			if(map.containsKey(s.charAt(endWindow))) {
+				System.out.println("removing key: " + s.charAt(startWindow));
+				map.remove(s.charAt(startWindow));
+				startWindow++;
+			}
+
+			
+			map.merge(s.charAt(endWindow), 1, Integer::sum);
 	
+
+			longestSubstr = Math.max(longestSubstr, endWindow - startWindow + 1);
+
+		}
+
+		return longestSubstr;
+
+	}
+
 	public static void main(String[] args) {
-		String s1 = "abcabcbb";
-		String s2 = "bbbbb";
+//		String s1 = "abcabcbb";
+//		String s2 = "bbbbb";
 		String s3 = "pwwkew";
+//		String s4 = "au";
+
 		
 //		System.out.println(lengthOfLongestSubstring(s1));
 //		System.out.println(lengthOfLongestSubstring(s2));
 		System.out.println(lengthOfLongestSubstring(s3));
+//		System.out.println(lengthOfLongestSubstring(s4));
 	}
 }
