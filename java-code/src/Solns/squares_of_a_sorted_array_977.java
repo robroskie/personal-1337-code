@@ -3,31 +3,31 @@ package Solns;
 public class squares_of_a_sorted_array_977 {
 
     public static int[] sortedSquares(int[] nums) {
-		int left = (int)Math.floor(nums.length / 2);
-		int right = (int)Math.floor(nums.length / 2);
-		System.out.println(left);
+		int left = 0;
+		int right = nums.length - 1;
 		
 		int[] toReturn = new int[nums.length];
 		
-		toReturn[left] = nums[left];
+		int idx = nums.length - 1;
 		
-		left--;
-		right++;
-		
-		int count = 1;
-		
-		while(left > 0 && right < nums.length) {
-			int leftTemp = (int) Math.pow(2, nums[left]);
-			int rightTemp = (int) Math.pow(2, nums[right]);
-			
-			if(nums[leftTemp] < nums[rightTemp]) {
-				toReturn[count] = 
+		while(left <= right) {
+			if(Math.pow(nums[left], 2) < Math.pow(nums[right], 2)) {
+				toReturn[idx] = (int)Math.pow(nums[right], 2);
+				right--;
 			}
-			
+			else {
+				toReturn[idx] = (int)Math.pow(nums[left], 2);
+				left++;
+			}
+			idx--;
 		}
+		return toReturn;
     }
+}
 	
 	public static void main(String[] args) {
-		sortedSquares(new int[] {-7,-3,2,3,11});
+		int[] a = sortedSquares(new int[] {-7,-3,2,3,11});
+		for(int i = 0; i < a.length; i++)
+			System.out.println(a[i]);
 	}
 }
