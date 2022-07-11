@@ -1,45 +1,53 @@
-package Solns;
-
 import java.util.HashMap;
-import java.util.Map;
 
 public class longest_substring_without_repeating_characters_3 {
-	public static int lengthOfLongestSubstring(String s) {
-		int longestSubstr = 0;
-		int startWindow = 0;
-
-		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-
-		for (int endWindow = 0; endWindow < s.length(); endWindow++) {
-			System.out.println(map);
-			if(map.containsKey(s.charAt(endWindow))) {
-				System.out.println("removing key: " + s.charAt(startWindow));
-				map.remove(s.charAt(startWindow));
-				startWindow++;
+	public static void main(String[] args) {
+		String str1 = "aaa";
+		String str2 = "abc";
+		String str3 = "abcabcde";
+		String str4 = "dvdf";
+		
+		
+//		checkRepeat(str1);
+//		checkRepeat(str2);
+//		checkRepeat(str3);
+		checkRepeat(str4);
+		
+	}
+	
+	public static void checkRepeat(String str) {
+		HashMap<String, Integer> contained = new HashMap<>();
+		
+        int rtnCount = 0;
+		int count = 0;
+		
+		for(int z = 0; z < str.length(); z++) {
+			String curr = Character.toString(str.charAt(z));
+			
+			if(contained.containsKey(curr)) {
+				System.out.println("end of longest string");
+				
+				count = 0;
+				//contained = new HashMap<>();
+//				z++;
+			}
+			else {
+				contained.put(curr, 1);
+				count++;
+				
 			}
 
+			rtnCount = Math.max(count, rtnCount);
 			
-			map.merge(s.charAt(endWindow), 1, Integer::sum);
-	
-
-			longestSubstr = Math.max(longestSubstr, endWindow - startWindow + 1);
-
 		}
 
-		return longestSubstr;
-
-	}
-
-	public static void main(String[] args) {
-//		String s1 = "abcabcbb";
-//		String s2 = "bbbbb";
-		String s3 = "pwwkew";
-//		String s4 = "au";
-
 		
-//		System.out.println(lengthOfLongestSubstring(s1));
-//		System.out.println(lengthOfLongestSubstring(s2));
-		System.out.println(lengthOfLongestSubstring(s3));
-//		System.out.println(lengthOfLongestSubstring(s4));
+		System.out.println(contained.toString());
+		System.out.println(rtnCount);
 	}
 }
+
+
+//for(int i = z; i < str.length(); i++) {
+//
+//}
