@@ -2,25 +2,7 @@ package Solns;
 
 public class maximum_depth_of_binary_tree_104 {
 
-//	  Definition for a binary tree node.
-	public class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
 
-		TreeNode() {
-		}
-
-		TreeNode(int val) {
-			this.val = val;
-		}
-
-		TreeNode(int val, TreeNode left, TreeNode right) {
-			this.val = val;
-			this.left = left;
-			this.right = right;
-		}
-	}
 
 	public int maxDepth(TreeNode root) {
 		// If the current node is null, return 0 since it won't contribute to the max depth 
