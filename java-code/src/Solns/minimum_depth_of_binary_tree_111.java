@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import Generic_Classes.TreeNode;
+
 
 
  class minimum_depth_of_binary_tree_111 {

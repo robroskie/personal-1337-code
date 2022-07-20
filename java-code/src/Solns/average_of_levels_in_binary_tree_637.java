@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import Generic_Classes.TreeNode;
+
 public class average_of_levels_in_binary_tree_637 {
     public static List<Double> averageOfLevels(TreeNode root) {
         List<Double> toReturn = new ArrayList<Double>();

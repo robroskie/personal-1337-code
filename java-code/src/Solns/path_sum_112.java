@@ -1,5 +1,7 @@
 package Solns;
 
+import Generic_Classes.TreeNode;
+
 public class path_sum_112 {
 
 	public boolean hasPathSum(TreeNode root, int targetSum) {

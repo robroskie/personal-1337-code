@@ -1,5 +1,7 @@
 package Solns;
 
+import Generic_Classes.TreeNode;
+
 public class invert_binary_tree_226 {
 	class Solution {
 	    public TreeNode invertTree(TreeNode root) {
