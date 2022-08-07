@@ -1,35 +1,57 @@
 package DFS;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.Arrays;
 
 public class num_of_islands_200 {
 
-	public static void bfs(int[][] grid, int[] curCoordinates) {
+	public static void printMatrix(int[][] matrix) {
+		for (int[] a : matrix)
+			System.out.println(Arrays.toString(a));
+	}
+
+	public static int countIslands(int[][] matrix) {
+		int numIslands = 0;
+
+		for (int rows = 0; rows < matrix.length; rows++) {
+			for (int cols = 0; cols < matrix[rows].length; cols++) {
+				if (matrix[rows][cols] == 1) {
+					System.out.println("1 found!");
+					numIslands++;
+					visitIslandDFS(matrix, rows, cols);
+				}
+			}
+		}
+//		printMatrix(matrix);
+//		tester(matrix);
+//		printMatrix(matrix);
+		return numIslands;
 
 	}
 
-	public static void main(String[] args) {
-		char[][] grid = { { '1', '1', '1', '1', '0' }, { '1', '1', '0', '1', '0' }, { '1', '1', '0', '0', '0' },
-				{ '0', '0', '0', '0', '0' } };
-
-		char[][] grid1 = { { '1', '2', '3', '4', '5' }, { '6', '7', '8', '9', 'a' }, { 'b', 'c', 'd', 'e', 'f' },
-				{ 'g', 'h', 'i', 'j', 'k' } };
-
-		int[][] grid2 = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
-
-		for (int i = 0; i < grid2.length; i++) {
-			for(int z = 0; z < grid2[i].length; z++) {
-				System.out.print(grid2[i][z] + ", ");
-			}
-			System.out.println();
+	private static void visitIslandDFS(int[][] matrix, int x, int y) {
+		if(x < 0 || y < 0 || x > matrix.length - 1 || y > matrix[0].length - 1 || matrix[x][y] == 0) {
+			return;
 		}
-		System.out.println();
-	
+		
+		matrix[x][y] = 0;
+		
+		visitIslandDFS(matrix, x + 1, y);
+		visitIslandDFS(matrix, x - 1, y);
+		visitIslandDFS(matrix, x, y + 1);
+		visitIslandDFS(matrix, x, y - 1);
+	}
 
-		bfs(grid2, new int[] {0,0});
+	private static void tester(int[][] matrix) {
+		matrix[0][0] = 69;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(countIslands(new int[][] { { 0, 1, 1, 1, 0 }, { 0, 0, 0, 1, 1 }, { 0, 1, 1, 1, 0 },
+				{ 0, 1, 1, 0, 0 }, { 0, 0, 0, 0, 0 } }));
+
+		System.out.println("take 2");
+		System.out.println(countIslands(new int[][] { { 1, 1, 1, 0, 0 }, { 0, 1, 0, 0, 1 }, { 0, 0, 1, 1, 0 },
+				{ 0, 0, 1, 0, 0 }, { 0, 0, 1, 0, 0 } }));
 	}
 
 }
