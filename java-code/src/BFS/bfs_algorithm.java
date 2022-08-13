@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class bfs_algorithm {
 
+	
 	public static List<List<Integer>> traverse(TreeNode root) {
 		List<List<Integer>> result = new ArrayList<>();
 				
