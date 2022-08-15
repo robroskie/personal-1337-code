@@ -41,15 +41,15 @@ public class group_anagrams_49 {
 		
 		List<List<String>> res = new ArrayList<>();
 		
-		for(int i = 0; i < strings.size(); i++) {
+		while(strings.size() > 0) {
 			List<String> temp = new ArrayList<>();
-			temp.add(strings.get(i));
-			strings.remove(i);
+			temp.add(strings.get(0));
+			strings.remove(0);
 			
-			for(int z = 0; z < strings.size(); z++) {
-				if(isAnagram(temp.get(0), strings.get(z))){
-					temp.add(strings.get(z));
-					strings.remove(z);
+			for(int i = 0; i < strings.size(); i++) {
+				if(isAnagram(temp.get(0), strings.get(i))) {
+					temp.add(strings.get(i));
+					strings.remove(i);
 				}
 			}
 			res.add(temp);
