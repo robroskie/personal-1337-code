@@ -17,10 +17,13 @@ public class Valid_Parenthesses_20 {
     			st.push(')');
     		else if(current_bracket == '[')
     			st.push(']');		
-    		else if(st.isEmpty() || st.pop() != current_bracket)))
+    		else if(st.isEmpty() || st.pop() != current_bracket)
 				return false;
+
     	}
+        return st.isEmpty();
     }
+    
 	public static void main(String[] args) {
 		
 	}
