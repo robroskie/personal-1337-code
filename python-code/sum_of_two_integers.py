@@ -1,16 +1,15 @@
 class Solution:
     def getSum(self, a: int, b: int) -> int:
+        xorOP = a ^ b
+        andOP = (a & b) << 1
+
+        while(andOP != 0):
+            temp = xorOP
+            xorOP = andOP ^ xorOP
+            andOP = (temp & andOP) << 1
 
 
-        while(b  != 0):
-            temp = (a & b) << 1
-            a = a ^ b
-            b = temp
+            print(bin(xorOP))
+            print(bin(andOP))
 
-
-        print(bin(b))
-        return b
-
-
-
-    getSum(0, 9, 11)
+    getSum(0, -1, 1)
