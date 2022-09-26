@@ -21,8 +21,6 @@ def levelOrderBottom(root):
             current = queue.pop(0)
             temp.append(current.val)
 
-            # print(current.val, end = ' ')
-
             if(current.left != None):
                 queue.append(current.left)
             if(current.right != None):
