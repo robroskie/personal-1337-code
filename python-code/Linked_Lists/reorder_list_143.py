@@ -1,3 +1,5 @@
+import math
+
 class ListNode:
     def __init__(self, val = 0, next=None):
         self.val = val
@@ -11,58 +13,71 @@ class ListNode:
         print()
 
 def reorderList(head):
-    listAsArr = []
 
-    returnlist = []
 
+    # Find list size
+    i = 0
     temp = head
-
-    while temp != None:
-        listAsArr.append(temp.val)
+    while(temp != None):
+        i += 1
         temp = temp.next
 
-    left = 0
-    right = len(listAsArr) - 1
+    # Find index of middle element rounded down
+    mid_element = math.floor(i / 2)
+    print(mid_element)
 
-    while left < right:
-        returnlist.append(listAsArr[left])
-        returnlist.append(listAsArr[right])
-        left += 1
-        right -= 1
-
-    if (len(listAsArr) % 2) != 0:
-        returnlist.append(listAsArr[left])
-
-    head.val = returnlist[0]
+    # Build reverse of second half
+    k = 0
     temp = head
-    returnlist.pop(0)
-
-    print(temp.next)
-
-    for i in returnlist:
-        # print('adding {}'.format(i))
-        temp.next.val = i
+    while(k < mid_element):
         temp = temp.next
+        k += 1
+    print('mid element is {}'.format(temp.val))
 
 
-    # return head
-    head.print_list()
 
-def main():
-    list1 = ListNode(1)
-    head = list1
-    for i in range(2,6):
-        head.next = ListNode(i)
-        head = head.next
-
-    list2 = ListNode(1)
-    head = list2
-    for i in range(2,7):
-        head.next = ListNode(i)
-        head = head.next
+    temp2 = temp.next
+    temp3 = temp2.next
+    temp.next = None
 
 
-    t1 = reorderList(list1)
+
+    print('{},  {},  {}'.format(temp.val,temp2.val,temp3.val))
+
+    while(temp3.next != None):
+        print('loop')
+        temp2.next = temp
+
+        temp = temp2
+        temp2 = temp3
+        temp3 = temp3.next
+
+    temp3.next = temp2
 
 
-main()
+
+    #
+    # while(temp3 != None):
+    #
+    #     print(temp3.val)
+    #     temp3 = temp3.next
+
+
+
+
+
+
+list1 = ListNode(1)
+head = list1
+for i in range(2,11):
+    head.next = ListNode(i)
+    head = head.next
+
+list2 = ListNode(1)
+head = list2
+for i in range(2,7):
+    head.next = ListNode(i)
+    head = head.next
+
+
+t1 = reorderList(list1)
