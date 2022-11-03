@@ -5,67 +5,64 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def print_list(self):
-        temp = self
-        while temp is not None:
-            print(temp.val, end=" ")
-            temp = temp.next
-        print()
+def print_list(self):
+    temp = self
+    while temp is not None:
+        print(temp.val, end=" ")
+        temp = temp.next
+    print()
 
 def reorderList(head):
-
-
-    # Find list size
-    i = 0
     temp = head
-    while(temp != None):
-        i += 1
+
+    arr = []
+
+
+
+    while temp != None:
+        arr.append(temp.val)
         temp = temp.next
 
-    # Find index of middle element rounded down
-    mid_element = math.floor(i / 2)
-    print(mid_element)
+    left = 0
+    right = len(arr) - 1
 
-    # Build reverse of second half
-    k = 0
-    temp = head
-    while(k < mid_element):
-        temp = temp.next
-        k += 1
-    print('mid element is {}'.format(temp.val))
+    newHead = ListNode(arr[left])
+    tempnewHead = newHead
+    tempnewHead.next = ListNode(arr[right])
+    tempnewHead = tempnewHead.next
 
+    left += 1
+    right -= 1
 
+    print(arr)
 
-    temp2 = temp.next
-    temp3 = temp2.next
-    temp.next = None
+    while left < right:
+        print('newhead: ')
 
+        print()
 
+        tempnewHead.next = ListNode(arr[left])
+        tempnewHead = tempnewHead.next
+        tempnewHead.next = ListNode(arr[right])
+        tempnewHead = tempnewHead.next
 
-    print('{},  {},  {}'.format(temp.val,temp2.val,temp3.val))
+        left += 1
+        right -= 1
 
-    while(temp3.next != None):
-        print('loop')
-        temp2.next = temp
+    if len(arr) % 2 != 0:
+        tempnewHead.next = ListNode(arr[math.floor(len(arr) / 2)])
+        tempnewHead = tempnewHead.next
+    print_list((newHead))
 
-        temp = temp2
-        temp2 = temp3
+    temp3 = head
+    tempnewHead = newHead
+
+    while tempnewHead != None:
+        temp3.val = tempnewHead.val
+        tempnewHead = tempnewHead.next
         temp3 = temp3.next
 
-    temp3.next = temp2
-
-
-
-    #
-    # while(temp3 != None):
-    #
-    #     print(temp3.val)
-    #     temp3 = temp3.next
-
-
-
-
-
+    print_list(head)
 
 list1 = ListNode(1)
 head = list1
@@ -75,9 +72,25 @@ for i in range(2,11):
 
 list2 = ListNode(1)
 head = list2
-for i in range(2,7):
+for i in range(2,8):
     head.next = ListNode(i)
     head = head.next
 
+list3 = ListNode(1)
+head = list3
 
-t1 = reorderList(list1)
+for i in range(2,5):
+    head.next = ListNode(i)
+    head = head.next
+    print('element')
+    print(i)
+
+# print_list(list1)
+# t1 = reorderList(list1)
+#
+# print_list(list2)
+# t2 = reorderList(list2)
+
+# reorderList(list3)
+
+reorderList(ListNode(1))
